@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+	<title>CanRender</title>
+	<script type="text/javascript" src="js/CanRender.js"></script>
+</head>
+<body onload="initCanRender();">
+
+	<div data-can-render></div>
+
+<script>
+	function initCanRender(){
+		
+		var canRender = new CanRender({
+			fullScreen: true,
+			fps: 25,
+			designWidth: 852,
+			designHeight: 480,
+		});
+
+		var renderElms = [];
+		var elm1 = {
+			name: 'element 1',
+			src: 'img/cow_sheet.png',
+			tileWidth: 200,
+			tileHeight: 200,
+			drawX: 120,
+			drawY: 400,
+
+		};
+		var elm2 = {
+			name: 'element 2',
+			src: 'img/cow_sheet.png',
+			tileWidth: 200,
+			tileHeight: 200,
+			drawX: 240,
+			drawY: 12,
+		};
+		renderElms.push(elm1);
+		renderElms.push(elm2);
+		
+		var myModule = canRender.newModule({
+			name: 'myNewModule',
+			drawX: 20,
+			drawY: 0,
+			width: 200,
+			height: 150,
+			scale: 2.3
+		}, renderElms);
+		
+		canRender.play();
+	};
+</script>
+</body>
+</html>
