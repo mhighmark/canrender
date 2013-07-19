@@ -12,17 +12,17 @@ define(['MasterRender'], function(masterRender){
 
 	signal = function(newSignal, options){
 		switch(newSignal){
-			case 'startgameloop':
+			case signals.STARTGAMELOOP:
 			masterRender.play();
 			break;
-			case 'pausegameloop':
+			case signals.PAUSEGAMELOOP:
 			masterRender.pause();
 			break;
-			case 'addmodule':
+			case signals.ADDMODULE:
 			masterRender.addModule(options);
 			break;
 			default:
-			console.error('signal: "'+newSignal+'"" not recognized');
+			console.error('signal: "'+newSignal+'"" not recognized. Options: '+options);
 			break;
 		}
 	};
