@@ -29,11 +29,12 @@ define([], function(renderModule){
     heightScaleFactor = window.innerHeight / targetHeight;
     cvs.width = targetWidth;
     cvs.height = targetHeight;
-
     //scaling and stretching the canvas to full screen, irrespective of screen dimensions.
     ctx.scale(widthScaleFactor,heightScaleFactor); 
     ctx.translate(0,0);
-
+    //adding the master canvas
+    var container = document.querySelector('#masterContainer');
+    container.appendChild(cvs);
     addModule = function(module){
     	//adds a render module to the que. Could be a spawned enemy at runtime, or an animated background when initating the game.
     	liveModules.push(module);
@@ -54,6 +55,7 @@ define([], function(renderModule){
             if (currentFPS > FPS) {
                 currentFPS = FPS;
             }
+            ctx.clearRect(0,0,cvs.width,cvs.height);
             for(i=len; --i>=0;){
                 renderElm = liveModules[i];
                 //the renderElm.Render() will return a fully rendered canvas element for rendering onto the main canvas, 
